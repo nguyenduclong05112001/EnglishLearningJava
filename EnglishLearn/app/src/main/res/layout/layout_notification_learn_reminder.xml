@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/green"
+    android:layout_width="match_parent"
+    android:layout_height="88dp">
+
+    <ImageView
+        android:id="@+id/lnlr_image"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/ic_notificationlearn" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/lnlr_image"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/lnlr_title"
+            style="@style/TextAppearance.Compat.Notification.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello You"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/lnlr_info"
+            style="@style/TextAppearance.Compat.Notification.Info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You in Study go"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</RelativeLayout>

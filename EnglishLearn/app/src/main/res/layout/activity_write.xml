@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="15dp"
+    android:paddingVertical="10dp"
+    tools:context=".activities.activitiesforlearn.WriteActivity">
+
+    <TextView
+        android:id="@+id/aw_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/look_and_translate"
+        android:textColor="@color/darkblue"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/aw_containquestion"
+        android:layout_below="@+id/aw_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/corner_17_boder_black"
+        android:padding="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/aw_country"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/ic_vn"
+            app:civ_border_color="@color/red"
+            app:civ_border_width="5dp" />
+
+        <TextView
+            android:id="@+id/aw_textquestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/aw_country"
+            android:textColor="@color/darkblue"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/aw_containquestion"
+        android:layout_above="@id/aw_confirmAnswer"
+        android:layout_marginVertical="50dp"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="@string/translate_into_english"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/aw_txtanswer"
+            android:hint="@string/enter_your_answer"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="10dp"
+            android:inputType="textMultiLine"
+            android:background="@drawable/transparent_corner_17"
+            android:minLines="6"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:gravity="start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/aw_confirmAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/gray"
+        android:enabled="false"
+        android:paddingVertical="10dp"
+        android:text="@string/complete"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:cornerRadius="20dp" />
+
+</RelativeLayout>

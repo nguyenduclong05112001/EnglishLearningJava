@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/actt_layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CreateTheTestActivity">
+
+    <TextView
+        android:text="@string/create_the_test"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textColor="@color/green"
+        android:textStyle="bold"
+        android:layout_marginVertical="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/actt_img"
+        android:src="@drawable/ic_image_select"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginVertical="20dp"
+        app:civ_border_color="@color/darkblue"
+        app:civ_border_width="5dp" />
+
+    <EditText
+        android:id="@+id/actt_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/transparent_corner_17"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="15dp"
+        android:hint="@string/enter_id_of_the_test"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textSize="17sp"/>
+
+    <EditText
+        android:id="@+id/actt_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/transparent_corner_17"
+        android:gravity="start"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="15dp"
+        android:hint="@string/enter_title_of_the_test"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:textColor="@color/black"
+        android:textSize="17sp"/>
+
+    <EditText
+        android:id="@+id/actt_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/transparent_corner_17"
+        android:gravity="start"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="15dp"
+        android:hint="@string/enter_number_of_questions_of_the_test"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:textSize="17sp"/>
+
+    <Button
+        android:id="@+id/actt_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="50dp"
+        android:backgroundTint="@color/green"
+        android:paddingVertical="10dp"
+        android:text="@string/create_now"
+        android:layout_marginHorizontal="20dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:cornerRadius="20dp" />
+
+</LinearLayout>

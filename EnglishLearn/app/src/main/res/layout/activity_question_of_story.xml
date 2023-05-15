@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.QuestionOfStoryActivity">
+
+    <TextView
+        android:text="@string/choose_the_best_answer"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textColor="@color/darkblue"
+        android:gravity="center_horizontal"
+        android:layout_marginVertical="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/aqos_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/layout_blue_corner_30"
+            android:gravity="center"
+            android:paddingVertical="50dp"
+            android:text="this question"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/aqos_questionnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/layout_orange_corner_30"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="15dp"
+            android:text="@string/question"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/aqos_answer1"
+        android:text="question 1"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:background="@drawable/layout_blue_corner_35"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:paddingVertical="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/aqos_answer2"
+        android:text="question 1"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:background="@drawable/layout_blue_corner_35"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:paddingVertical="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/aqos_answer3"
+        android:text="question 1"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:background="@drawable/layout_blue_corner_35"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:paddingVertical="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/aqos_answer4"
+        android:text="question 1"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:background="@drawable/layout_blue_corner_35"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="40dp"
+        android:gravity="center_horizontal"
+        android:paddingVertical="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

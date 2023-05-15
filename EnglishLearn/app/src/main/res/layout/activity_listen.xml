@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/al_layoutmain"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="15dp"
+    android:paddingVertical="10dp"
+    tools:context=".activities.activitiesforlearn.ListenActivity">
+
+    <TextView
+        android:id="@+id/al_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/listen_and_choose"
+        android:textColor="@color/darkblue"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/al_contain_img_ques"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/al_title"
+        android:layout_marginTop="50dp">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/al_icgit"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_listen" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/al_icgit"
+            android:background="@drawable/corner_17_boder_black"
+            android:padding="10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/al_peaker"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/ic_speaker"
+                app:civ_border_color="@color/darkblue"
+                app:civ_border_width="5dp" />
+
+            <TextView
+                android:id="@+id/al_textquestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/al_peaker"
+                android:textColor="@color/darkblue"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/al_confirmAnswer"
+        android:layout_below="@+id/al_contain_img_ques"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+        <com.wefika.flowlayout.FlowLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/al_containAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/corner_17_boder_black"
+            android:gravity="start|top" />
+
+        <com.wefika.flowlayout.FlowLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/al_containChoise"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/al_confirmAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/gray"
+        android:enabled="false"
+        android:paddingVertical="10dp"
+        android:text="@string/complete"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:cornerRadius="20dp" />
+
+</RelativeLayout>

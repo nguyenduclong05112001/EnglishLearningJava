@@ -1,0 +1,209 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+.main-show {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.container-header {
+    position: absolute;
+    height: 70px;
+    width: 100%;
+}
+
+.container-header .header-btnadd {
+    position: absolute;
+    height: 60%;
+    width: 150px;
+    top: 20%;
+}
+
+.header-btnadd #btnadd {
+    font-size: 20px;
+    height: 100%;
+    width: 100%;
+    background-color: #008080;
+}
+
+.container-header .header-txtsearch {
+    position: absolute;
+    right: 180px;
+    height: 60%;
+    width: 350px;
+    top: 20%;
+}
+
+.container-header .header-btnsearch {
+    position: absolute;
+    right: 100px;
+    height: 60%;
+    width: 80px;
+    top: 20%;
+}
+
+.header-txtsearch #txtsearch {
+    padding: 10px;
+    font-size: 20px;
+    height: 100%;
+    width: 100%;
+    border: solid 1px #2574A9;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.header-btnsearch #btnsearch {
+    font-size: 20px;
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.container-inserts {
+    display: none;
+}
+
+.container-inserts.active {
+    display: block;
+    position: absolute;
+    height: calc(100vh - 70px);
+    width: 100%;
+    top: 70px;
+}
+
+.container-tables.active {
+    display: block;
+    position: absolute;
+    height: calc(100vh - 50px);
+    width: 100%;
+    top: 70px;
+}
+
+.container-tables {
+    display: none;
+}
+
+.container-tables.active table {
+    width: 100%;
+    text-align: left;
+    font-size: 20px;
+    border-collapse: collapse
+}
+
+table thead {
+    font-size: 25px;
+    background-color: #B0E0E6;
+    color: rgb(0, 0, 0);
+}
+
+tbody tr {
+    border: solid black 1px;
+    border-right-style: none;
+    border-left-style: none;
+}
+
+tr td {
+    padding: 10px 5px;
+    line-height: 35px;
+}
+
+tbody .row-data .data {
+    display: block;
+}
+
+.row-data .input {
+    display: none;
+}
+
+.row-data.on-edit .data {
+    display: none;
+}
+
+.row-data.on-edit .input {
+    display: block;
+}
+
+.row-data.on-edit .col1,
+.row-data.on-edit .col6 {
+    text-align: left;
+    width: 10%;
+}
+
+.row-data.on-edit .col2,
+.row-data.on-edit .col3,
+.row-data.on-edit .col4,
+.row-data.on-edit .col5 {
+    text-align: left;
+    width: 20%;
+}
+
+.row-data.on-edit #col-2-in,
+.row-data.on-edit #col-3-in,
+.row-data.on-edit #col-4-in,
+.row-data.on-edit #col-5-in {
+    height: 20px;
+    width: 100%;
+}
+
+td .btn-handle {
+    display: block;
+    float: left;
+    height: 30px;
+    width: 80px;
+    margin-right: 5px;
+    font-size: 20px;
+}
+
+td #btn-delete {
+    background-color: red;
+}
+
+td #btn-edit {
+    background-color: orange;
+}
+
+td #btn-save {
+    background-color: #00e0ff;
+}
+
+td #btn-cancel {
+    background-color: #f00101;
+}
+
+.btn-handle {
+    border: none;
+    background-color: #2574A9;
+    color: white;
+}
+
+.btn-handle:hover {
+    cursor: pointer;
+    color: #D7D7D7;
+}
+
+input {
+    cursor: pointer;
+}
+
+table tbody tr:hover {
+    background-color: #F8F8FF;
+    color: #000000;
+    cursor: pointer;
+}
+
+#tr_pagination {
+    text-align: right;
+    border-bottom-style: none;
+    border-top-style: none;
+}
+
+#tr_pagination:hover {
+    background-color: white;
+    cursor: auto;
+}

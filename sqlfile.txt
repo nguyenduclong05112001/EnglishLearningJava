@@ -1,0 +1,277 @@
+Create database englishstudy;
+
+Create table users(
+    username varchar(150) not null primary key,
+    name text not null,
+    avatar text,
+    password text not null
+);
+
+ALTER TABLE users ADD COLUMN role int not null DEFAULT 2;
+
+Create table achievementofuser(
+    username varchar(150) not null,
+    level int DEFAULT 1 not null,
+    part int DEFAULT 0 not null,
+    chain int DEFAULT 0 not null,
+    pointofday int DEFAULT 0 not null,
+    pointofweek int DEFAULT 0 not null,
+    CONSTRAINT fk_achievementofuser FOREIGN KEY(username) REFERENCES users(username)
+);
+
+DELIMITER $$
+
+ CREATE TRIGGER after_user_create
+
+ AFTER INSERT ON users
+
+ FOR EACH ROW
+
+BEGIN
+
+ INSERT INTO achievementofuser
+
+SET
+
+ username = NEW.username;
+
+END$$
+
+ DELIMITER ;
+
+Create table levels(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    name varchar(200) not null,
+    avatar text,
+    sumpart int DEFAULT 0 not null
+);
+Create table parts(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    idlevel int not null,
+    name varchar(200) not null,
+    avatar text,
+    status int(1) DEFAULT 0,
+    CONSTRAINT fk_part_level FOREIGN KEY (idlevel) REFERENCES Levels(id)
+);
+
+DELIMITER $$
+
+ CREATE TRIGGER after_level_create
+
+ AFTER INSERT ON parts
+
+ FOR EACH ROW
+
+BEGIN
+
+ UPDATE levels
+
+SET
+
+ sumpart = sumpart + 1;
+
+END$$
+
+ DELIMITER ;
+
+Create table Questions(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    idpart int not null,
+    content text not null,
+    CONSTRAINT fk_question_part FOREIGN KEY (idpart) REFERENCES parts(id)
+);
+
+Create table Answers(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    idpart int not null,
+    idquestion int not null,
+    content text not null,
+    CONSTRAINT fk_answer_question FOREIGN KEY (idquestion) REFERENCES questions(id),
+    CONSTRAINT fk_answer_part FOREIGN KEY (idpart) REFERENCES parts(id)
+);
+
+INSERT INTO `users`(`username`, `name`, `avatar`, `password`) 
+VALUES ('LongHRK','Nguyễn Đức Long','LongHRK.jpg',md5('0511'));
+
+INSERT INTO `levels`(`name`, `avatar`) 
+VALUES ('Cấp độ 1','level/level1.png');
+INSERT INTO `levels`(`name`, `avatar`) 
+VALUES ('Cấp độ 2','level/level2.png');
+INSERT INTO `levels`(`name`, `avatar`) 
+VALUES ('Cấp độ 3','level/level3.png');
+INSERT INTO `levels`(`name`, `avatar`) 
+VALUES ('Cấp độ 4','level/level4.png');
+INSERT INTO `levels`(`name`, `avatar`) 
+VALUES ('Cấp độ 5','level/level5.png');
+INSERT INTO `levels`(`name`, `avatar`) 
+VALUES ('Cấp độ 6','level/level6.png');
+INSERT INTO `levels`(`name`, `avatar`) 
+VALUES ('Cấp độ 7','level/level7.png');
+INSERT INTO `levels`(`name`, `avatar`) 
+VALUES ('Cấp độ 8','level/level8.png');
+INSERT INTO `levels`(`name`, `avatar`) 
+VALUES ('Cấp độ 9','level/level9.png');
+INSERT INTO `levels`(`name`, `avatar`) 
+VALUES ('Cấp độ 10','level/level10.png');
+
+INSERT INTO `parts`(`idlevel`, `name`, `avatar`) 
+VALUES (1,'Chào hỏi','part/level1part1.png');
+INSERT INTO `parts`(`idlevel`, `name`, `avatar`) 
+VALUES (1,'Giới thiệu','part/level1part2.png');
+INSERT INTO `parts`(`idlevel`, `name`, `avatar`) 
+VALUES (1,'Gia đình','part/level1part3.png');
+INSERT INTO `parts`(`idlevel`, `name`, `avatar`) 
+VALUES (1,'Mua sắm','part/level1part4.png');
+
+INSERT INTO `questions`(`idpart`, `content`) 
+VALUES (1,'Hello');
+INSERT INTO `questions`(`idpart`, `content`) 
+VALUES (1,' Good morning');
+INSERT INTO `questions`(`idpart`, `content`) 
+VALUES (1,' Good afternoon');
+INSERT INTO `questions`(`idpart`, `content`) 
+VALUES (1,' Good evening');
+INSERT INTO `questions`(`idpart`, `content`) 
+VALUES (1,' Know');
+INSERT INTO `questions`(`idpart`, `content`) 
+VALUES (1,' Nice to meet you');
+INSERT INTO `questions`(`idpart`, `content`) 
+VALUES (1,' Meet');
+INSERT INTO `questions`(`idpart`, `content`) 
+VALUES (1,' Pleasure');
+INSERT INTO `answers`(`idpart`, `idquestion`, `content`) 
+VALUES (1,1,'Xin chào');
+INSERT INTO `answers`(`idpart`, `idquestion`, `content`) 
+VALUES (1,2,'Chào buổi sáng');
+INSERT INTO `answers`(`idpart`, `idquestion`, `content`) 
+VALUES (1,3,' Chào buổi chiều');
+INSERT INTO `answers`(`idpart`, `idquestion`, `content`) 
+VALUES (1,4,' Chào buổi tối');
+INSERT INTO `answers`(`idpart`, `idquestion`, `content`) 
+VALUES (1,5,'Biết');
+INSERT INTO `answers`(`idpart`, `idquestion`, `content`) 
+VALUES (1,6,' Rất vui được biết bạn');
+INSERT INTO `answers`(`idpart`, `idquestion`, `content`) 
+VALUES (1,7,' Gặp');
+INSERT INTO `answers`(`idpart`, `idquestion`, `content`) 
+VALUES (1,8,' Hân hạnh');
+
+Create table story(
+	id int AUTO_INCREMENT PRIMARY KEY,
+    name text not null,
+    content text not null,
+    avatar text
+);
+
+INSERT INTO `story`(`name`, `content`, `avatar`) 
+VALUES ("A Baby and a Sock","The mother gave her baby a red apple. The baby tried to eat the apple. His mouth was too small. And he didn't have any teeth. His brother took the apple. His brother ate the apple. The baby cried. His brother gave the baby a blue ball to play with. The baby smiled. His brother took the ball from the baby. He rolled the ball on the floor. The brown and white dog picked up the ball. The dog chewed on the ball. The baby cried again. His brother picked up the cat. He put the cat on the bed with the baby. The baby pulled the cat's tail. The cat jumped off the bed. The dog chased the cat. The baby cried again. His brother let the baby hold a sock. The baby played with the sock. The baby was happy.","story/story1.jpg");
+INSERT INTO `story`(`name`, `content`, `avatar`) 
+VALUES ("Birds and a Baby","The baby was lying on her back. A blue bird flew in through the window. The blue bird had blue eyes. It sat on the baby's crib. The bird had a bell around its neck. The bell rang. The baby smiled. The baby reached for the bell. The bird shook its head. The bell fell off the bird's neck. It fell next to the baby. The baby picked up the bell. The baby rang the bell. Another blue bird flew in through the window. This blue bird also had blue eyes. The baby had brown eyes. The birds looked at the baby. The baby looked at the birds. The baby rang the bell again. Both birds flew away. The baby started to cry. His mama came into the room. The baby smiled. Mama saw the bell. She asked the baby where the bell came from. The baby pointed at the window.","story/story2.jpg");
+INSERT INTO `story`(`name`, `content`, `avatar`) 
+VALUES ("A Cat and a Dog","The black cat jumped up onto the chair. It looked down at the white dog. The dog was chewing on a bone. The cat jumped onto the dog. The dog kept chewing the bone. The cat played with the dog's tail. The dog kept chewing the bone. The cat jumped back onto the chair. It started licking its paws. The dog stood up. It looked at the cat. It licked the cat's fur. The cat licked the dog's nose. The dog went back to its bone. A boy ran through the room. He was wearing a yellow shirt. He almost ran into the chair. The cat jumped off the chair. The cat jumped onto the sofa. The chair fell onto the floor next to the dog. The dog stopped chewing the bone. The dog chased the boy. The boy ran out to the street. He threw a stick. The dog chased the stick. The dog lay down. It chewed on the stick.","story/story3.jpg");
+INSERT INTO `story`(`name`, `content`, `avatar`) 
+VALUES ("The Baby Bear","The baby bear followed his mama. Mama bear walked through the woods. She was looking for berries to eat. She found some black berries. She started eating them. The baby started eating them, too. They ate all the berries. Baby bear was full. Mama bear was still hungry. She started walking again. She wanted to find more berries to eat. Baby bear lay down. He was full. He wanted to take a nap. But mama bear came back. She growled at baby bear. He understood mama's growl. When mama growled, he obeyed. He got up and followed his mama. Someday he would take a nap after a meal. A squirrel ran up a tree with a nut. It dropped the nut and ran back down to the ground. It picked up the nut and looked at baby bear. Then it ran back up the tree. Baby bear did not like nuts. They were too hard to open.","story/story4.jpg");
+Create table questionofstory(
+	id int AUTO_INCREMENT PRIMARY KEY,
+    idstory int not null,
+    content text not null,
+    CONSTRAINT fk_questionofstory FOREIGN KEY (idstory) REFERENCES story(id)
+);
+
+Create table answerofstory(
+	id int AUTO_INCREMENT PRIMARY KEY,
+    idstory int not null,
+    idquestion int not null,
+    content text not null,
+    statusanswer int DEFAULT 0 not null,
+    CONSTRAINT fk_answerofstory_story FOREIGN KEY (idstory) REFERENCES story(id),
+    CONSTRAINT fk_answerofstory_question FOREIGN KEY (idquestion) REFERENCES questionofstory(id)
+);
+INSERT INTO `questionofstory`(`idstory`, `content`) 
+VALUES (1,"Em bé đã khóc tất cả mấy lần");
+
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,1,"2",0);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,1,"4",0);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,1,"3",1);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,1,"5",0);
+
+INSERT INTO `questionofstory`(`idstory`, `content`) 
+VALUES (1,"Người mẹ đã cho đứa bé ăn nững gì");
+
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,2,"Bánh mì và kem",0);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,2,"Kẹo",0);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,2,"Sữa bột",0);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,2,"Táo",1);
+INSERT INTO `questionofstory`(`idstory`, `content`) 
+VALUES (1,"Em bé đã ăn quả táo mẹ cho như thế nào");
+
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,3,"Ăn rất nhanh",0);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,3,"Người anh đã ăn",1);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,3,"Ăn rất chậm",0);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,3,"Vừa khóc vừa ăn",0);
+INSERT INTO `questionofstory`(`idstory`, `content`) 
+VALUES (1,"Cuối cùng thì em bé đã vui trở lại vì");
+
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,4,"Anh trai anh để đứa bé ôm một chiếc tất",1);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,4,"Mẹ em bé đã đánh anh trai",0);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,4,"Anh trai xin lỗi em bé",0);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,4,"Mẹ cho em bé một quả táo khác",0);
+INSERT INTO `questionofstory`(`idstory`, `content`) 
+VALUES (1,"Tại sao con mèo nhảy khỏi giường của em bé");
+
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,5,"Con chó đuổi con mèo",0);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,5,"Mẹ đuổi con mèo",0);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,5,"Anh trai đuổi con mèo",0);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,5,"Em bé kéo đuôi mèo",1);
+INSERT INTO `questionofstory`(`idstory`, `content`) 
+VALUES (1,"Anh trai đã đưa cho em mình quả bóng màu gì");
+
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,6,"Màu xanh lá",0);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,6,"Màu cam",0);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,6,"Màu xanh dương",1);
+INSERT INTO `answerofstory`( `idstory`, `idquestion`, `content`, `statusanswer`) 
+VALUES (1,6,"Màu đỏ",0);
+
+Create table thetestofusers(
+	id varchar(150) not null PRIMARY KEY,
+    iduser varchar(150) not null,
+    name text not null,
+    avatar text,
+    datecreate varchar(200) not null,
+    CONSTRAINT fk_thetestofusers FOREIGN KEY (iduser) REFERENCES users(username)
+);
+
+Create table questionoftest(
+	id int AUTO_INCREMENT PRIMARY KEY,
+    idtest varchar(150) not null,
+    content text not null,
+    answer1 text not null,
+    answer2 text not null,
+    answer3 text not null,
+    answer4 text not null,
+    goodanswer int DEFAULT 1,
+    CONSTRAINT fk_questionoftest FOREIGN KEY (idtest) REFERENCES thetestofusers(id)
+);

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/lmn_study"
+            android:title="@string/learn" />
+        <item
+            android:id="@+id/lmn_manga"
+            android:title="@string/story" />
+        <item
+            android:id="@+id/lmn_testofuser"
+            android:title="@string/the_test" />
+    </group>
+
+    <item android:title="@string/personal_information">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/lmn_editinfo"
+                    android:title="@string/edit" />
+            </group>
+
+            <item
+                android:id="@+id/lmn_language"
+                android:title="@string/language" />
+
+            <item
+                android:id="@+id/lmn_logout"
+                android:title="@string/logout" />
+        </menu>
+    </item>
+</menu>
